@@ -9,7 +9,7 @@ const bruno = Bruno_Ace_SC({
 export default function EnterButton(){
 
     return (
-        <Link className={`${bruno.className}`} href={getHomePath()} >ENTER</Link>
+        <Link className={`text-5xl z-50 outline-2 outline-black bg-white rounded-md p-4 ${bruno.className}`} href={getHomePath()} >ENTER</Link>
     )
 
 }

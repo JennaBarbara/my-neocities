@@ -19,8 +19,7 @@ const variants = {
   inActive: {
        height: 1, 
        width: 1,
-       "outline-width": 15
-       
+       "outline-width": 15   
   },
   active: (custom: number) => ({
     height:500, 
@@ -28,7 +27,12 @@ const variants = {
     "outline-width": 0,
     transition: { 
       delay: custom * 0.2,
-      duration: 2 }
+      duration: 2, 
+     },
+    transitionEnd: {  
+      "outline-width": 1,
+    },
+        
   })
 }
 
@@ -79,7 +83,6 @@ export default function Entrance() {
            onClick={() =>activateRippleManually()}
            disabled={hovered}
            >activate ripple</button>
-
         </div>
       </main>
   );

@@ -1,11 +1,11 @@
 "use client"
 
-import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Bruno_Ace_SC } from 'next/font/google'
 import { getHomePath } from'@/app/home/path'
 import { useState} from 'react'
 import { redirect, RedirectType } from 'next/navigation'
+import Button from '@/app/components/button'
 
 const bruno = Bruno_Ace_SC({
   weight: '400'
@@ -13,7 +13,7 @@ const bruno = Bruno_Ace_SC({
 
 const delay = (ms:number) => new Promise(res => setTimeout(res, ms));
 
-const rippleClassName = "absolute outline-15 outline-sky-500 size-1  rounded-full items-center justify-center"
+const rippleClassName = "absolute outline-15 outline-sky-500 size-1 rounded-full items-center justify-center"
 
 const variants = {
   inActive: {
@@ -60,7 +60,7 @@ export default function Entrance() {
 
 
   return (
-      <main className="flex flex-col h-screen w-screen bg-linear-to-t from-sky-300 to-sky-200 items-center justify-center p-2 text-black overflow-hidden">
+      <main className="flex flex-col h-screen w-screen bg-linear-to-t from-cyan-200 to-sky-500 items-center justify-center p-2 text-black overflow-hidden">
 
           <motion.div
             className={rippleClassName}
@@ -83,18 +83,18 @@ export default function Entrance() {
                 animate={isActive ? "active" : "inactive"}
               >
             </motion.div>
-       <button
-            className={`absolute cursor-pointer text-5xl z-50 outline-2 outline-black bg-white  p-4 ${bruno.className}`} 
-            onClick={() => enter() }
-            >ENTER</button>
+       <Button
+            className={`absolute  text-5xl z-50  ${bruno.className}`} 
+            onClick={() => enter()}
+            >ENTER</Button>
         <div className='absolute bottom-0 m-4'>
-          <button className='z-50 outline-2 outline-black bg-white p-4 mx-5 disabled:opacity-50' 
+          <Button className='mx-5 md:mx-30' 
            onClick={() =>activateRippleManually()}
            disabled={isActive}
-           >activate ripple</button>
-                    <button className='z-50 outline-2 outline-black bg-white mx-5 p-4 disabled:opacity-50' 
+           >activate ripple</Button>
+           <Button className='mx-5 md:mx-30' 
            onClick={() =>skip()}
-           >{"skip >>"}</button>
+           >{"skip >>"}</Button>
         </div>
       </main>
   );

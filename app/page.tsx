@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { Bruno_Ace_SC } from 'next/font/google'
 import { getHomePath } from'@/app/home/path'
 import { useState} from 'react'
-
+import { redirect, RedirectType } from 'next/navigation'
 
 const bruno = Bruno_Ace_SC({
   weight: '400'
@@ -13,7 +13,7 @@ const bruno = Bruno_Ace_SC({
 
 const delay = (ms:number) => new Promise(res => setTimeout(res, ms));
 
-const rippleClassName = "flex flex-col outline-15 outline-sky-500 size-1  rounded-full items-center justify-center"
+const rippleClassName = "absolute outline-15 outline-sky-500 size-1  rounded-full items-center justify-center"
 
 const variants = {
   inActive: {
@@ -30,7 +30,7 @@ const variants = {
       duration: 2, 
      },
     transitionEnd: {  
-      "outline-width": 1,
+    "outline-width": 0,
     },
         
   })
@@ -38,51 +38,63 @@ const variants = {
 
 
 export default function Entrance() {
-  const [hovered, setHovered] = useState<boolean>(false)
+  const [isActive, setIsActive] = useState<boolean>(false)
 
-  async function activateRippleManually(){
-      setHovered(true)
-      await delay(3000)
-      setHovered(false)
+
+  async function activateRippleManually() {  
+      setIsActive(true)
+      await delay(2400)
+      setIsActive(false)
     }
   
+  async function enter() {
+      setIsActive(true)
+      await delay(2400)
+      setIsActive(false)
+      redirect(getHomePath(), RedirectType.push) 
+    }
+
+    async function skip() {
+      redirect(getHomePath(), RedirectType.push)   
+    }
 
 
   return (
-      <main className="flex flex-col min-h-screen w-full bg-linear-to-t from-sky-300 to-sky-200 items-center justify-center p-2 text-black">
+      <main className="flex flex-col h-screen w-screen bg-linear-to-t from-sky-300 to-sky-200 items-center justify-center p-2 text-black overflow-hidden">
 
           <motion.div
             className={rippleClassName}
             variants={variants}
             custom={0}
-            animate={hovered ? "active" : "inactive"}
+            animate={isActive ? "active" : "inactive"}
           >
+        </motion.div>
             <motion.div
               className={rippleClassName}
               variants={variants}
               custom={1}
-              animate={hovered ? "active" : "inactive"}
+              animate={isActive ? "active" : "inactive"}
             >
+          </motion.div>
               <motion.div
                 className={rippleClassName}
                 variants={variants}
                 custom={2}
-                animate={hovered ? "active" : "inactive"}
+                animate={isActive ? "active" : "inactive"}
               >
-                <Link
-                  className={`text-5xl z-50 outline-2 outline-black bg-white  p-4 ${bruno.className}`} 
-                  href={getHomePath()} 
-                  onMouseEnter={() => setHovered(true)}
-                  onMouseOut={() => setHovered(false)}
-                  >ENTER</Link>
             </motion.div>
-          </motion.div>
-        </motion.div>
-        <div className='md:hidden absolute bottom-0 m-4'>
-          <button className='z-50 outline-2 outline-black bg-white  p-4 disabled:opacity-50' 
+       <button
+            className={`absolute cursor-pointer text-5xl z-50 outline-2 outline-black bg-white  p-4 ${bruno.className}`} 
+            onClick={() => enter() }
+            >ENTER</button>
+        <div className='absolute bottom-0 m-4'>
+          <button className='z-50 outline-2 outline-black bg-white p-4 mx-5 disabled:opacity-50' 
            onClick={() =>activateRippleManually()}
-           disabled={hovered}
+           disabled={isActive}
            >activate ripple</button>
+                    <button className='z-50 outline-2 outline-black bg-white mx-5 p-4 disabled:opacity-50' 
+           onClick={() =>skip()}
+           >{"skip >>"}</button>
         </div>
       </main>
   );

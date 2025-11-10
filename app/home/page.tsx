@@ -16,12 +16,12 @@ export default function Home() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-linear-to-t from-cyan-200 to-sky-500">
 
-      <main className="grid grid-cols-1 md:grid-cols-5 min-h-screen w-full max-w-4xl content-start py-20 px-2 bg-blue-50/50 gap-4">
+      <main className="grid grid-cols-1 md:grid-cols-5 min-h-screen w-full max-w-4xl content-start py-20 px-4 bg-blue-50/50 gap-x-2 gap-y-4">
           {/* header section */}
         <Heading text="˖⁺‧₊JenBarb's Online Space₊‧⁺˖" className="col-span-1 md:col-span-5 text-2xl p-4" />
 
         {/* left section */}
-        <div className="col-span-1 flex flex-col content-start gap-4">
+        <div className="col-span-1 flex flex-col content-start gap-2">
         <Card
             title="WebLog"
         >

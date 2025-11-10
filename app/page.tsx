@@ -43,13 +43,13 @@ export default function Entrance() {
 
   async function activateRippleManually() {  
       setIsActive(true)
-      await delay(2400)
+      await delay(2200)
       setIsActive(false)
     }
   
   async function enter() {
       setIsActive(true)
-      await delay(2400)
+      await delay(2200)
       setIsActive(false)
       redirect(getHomePath(), RedirectType.push) 
     }
@@ -86,6 +86,7 @@ export default function Entrance() {
        <Button
             className={`absolute  text-5xl z-50  ${bruno.className}`} 
             onClick={() => enter()}
+            disabled={isActive}
             >ENTER</Button>
         <div className='absolute bottom-0 m-4'>
           <Button className='mx-5 md:mx-30' 

@@ -13,25 +13,25 @@ const bruno = Bruno_Ace_SC({
 
 const delay = (ms:number) => new Promise(res => setTimeout(res, ms));
 
-const rippleClassName = "absolute outline-15 outline-sky-500 size-1 rounded-full items-center justify-center"
+const rippleClassName = "absolute outline-15 opacity-100 outline-white size-1 rounded-full items-center justify-center"
 
 const variants = {
   inActive: {
        height: 1, 
        width: 1,
-       "outline-width": 15   
+       opacity: 1,
+    transition: { 
+      duration: 0,
+     }
   },
   active: (custom: number) => ({
     height:500, 
     width:500,
-    "outline-width": 0,
+    opacity: 0,
     transition: { 
       delay: custom * 0.2,
-      duration: 2, 
-     },
-    transitionEnd: {  
-    "outline-width": 0,
-    },
+      duration: 2,
+     }
         
   })
 }
@@ -41,16 +41,14 @@ export default function Entrance() {
   const [isActive, setIsActive] = useState<boolean>(false)
 
 
-  async function activateRippleManually() {  
+  async function activateRipple() {  
       setIsActive(true)
-      await delay(2200)
+      await delay(2410)
       setIsActive(false)
     }
   
   async function enter() {
-      setIsActive(true)
-      await delay(2200)
-      setIsActive(false)
+      await activateRipple()
       redirect(getHomePath(), RedirectType.push) 
     }
 
@@ -66,23 +64,21 @@ export default function Entrance() {
             className={rippleClassName}
             variants={variants}
             custom={0}
-            animate={isActive ? "active" : "inactive"}
-          >
-        </motion.div>
-            <motion.div
-              className={rippleClassName}
-              variants={variants}
-              custom={1}
-              animate={isActive ? "active" : "inactive"}
-            >
-          </motion.div>
-              <motion.div
-                className={rippleClassName}
-                variants={variants}
-                custom={2}
-                animate={isActive ? "active" : "inactive"}
-              >
-            </motion.div>
+            animate={isActive ? "active" : "inActive"}
+          />
+          <motion.div
+            className={rippleClassName}
+            variants={variants}
+            custom={1}
+            animate={isActive ? "active" : "inActive"}
+          />
+          <motion.div
+            className={rippleClassName}
+            variants={variants}
+            custom={2}
+            animate={isActive ? "active" : "inActive"}
+          />
+         
        <Button
             className={`absolute  text-5xl z-50  ${bruno.className}`} 
             onClick={() => enter()}
@@ -90,7 +86,7 @@ export default function Entrance() {
             >ENTER</Button>
         <div className='absolute bottom-0 m-4'>
           <Button className='mx-5 md:mx-30' 
-           onClick={() =>activateRippleManually()}
+           onClick={() => activateRipple()}
            disabled={isActive}
            >activate ripple</Button>
            <Button className='mx-5 md:mx-30' 

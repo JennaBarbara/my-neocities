@@ -1,6 +1,5 @@
 
-export interface HomePathParams {}
 
-export function getHomePath(params?: HomePathParams): string {
+export function getHomePath(): string {
   return `/home`
 }

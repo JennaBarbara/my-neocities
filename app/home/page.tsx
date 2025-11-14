@@ -4,20 +4,14 @@ import Image from "next/image";
 import Card from '@/app/components/card'
 import Button from "@/app/components/button"
 import Heading from "@/app/components/heading"
+import { getWeblogPath } from "./weblog/path";
 import { redirect, RedirectType } from 'next/navigation'
-import { Bruno_Ace_SC } from 'next/font/google'
-
-const bruno = Bruno_Ace_SC({
-  weight: '400'
-})
 
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-linear-to-t from-cyan-200 to-sky-500">
-
-      <main className="grid grid-cols-1 md:grid-cols-5 min-h-screen w-full max-w-4xl content-start py-20 px-4 bg-blue-50/50 gap-x-2 gap-y-4">
-          {/* header section */}
+    <>
+        {/* header section */}
         <Heading text="˖⁺‧₊JenBarb's Online Space₊‧⁺˖" className="col-span-1 md:col-span-5 text-2xl p-4" />
 
         {/* left section */}
@@ -25,7 +19,13 @@ export default function Home() {
         <Card
             title="WebLog"
         >
-         Coming Soon!
+        <Button 
+            size="sm"
+            onClick={() => redirect(getWeblogPath(), RedirectType.push)}
+            >
+                All Posts
+        </Button>
+          
         </Card>
         <Card
             title="Shrines"
@@ -65,10 +65,10 @@ export default function Home() {
                 >
                     Instagram
                 </Button>
+                
         </Card> 
            
         </div>
-      </main>
-    </div>
+   </>
   );
 }

@@ -45,7 +45,7 @@ export default function Home() {
           I’m Jenna, I usually go by JenBarb or JenBarb_ online. I like doing crafts and programming. If you live in Toronto you might remember me from the time I drew fanart of a guy on a segway grabbing a raccoon and BlogTO interviewed me about it. I grew up on a bee farm. 
         </p>
         <p>
-          Lately I&apos;ve been into digital art, mostly using Clip Studio Paint I like the program&apos;s vector tools for being able to make clean looking illustrations without needing to spend too much time doing cleanup. That said, I&apos;ll probably be getting back into watercolour and gouache soon. 
+          Lately I&apos;ve been into digital art, mostly using Clip Studio Paint. I like the program&apos;s vector tools for being able to make clean looking illustrations without needing to spend too much time doing cleanup. That said, I&apos;ll probably be getting back into watercolour and gouache soon just to cut down on my screen time. 
         </p>
         <p>
           I&apos;ve also been enjoing sewing (mainly wearable garments for myself, from vintage and deadstock fabric, but I occasionally make cosplays), reading fantasy & sci books, and going to concerts these days. 

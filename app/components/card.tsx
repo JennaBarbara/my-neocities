@@ -2,8 +2,7 @@ import { ReactNode } from 'react'
 import  Heading  from '@/app/components/heading'
 
 
-export default function Card (  {children, title}:{children?: ReactNode,title?: string} ) {
-
+export default function Card ({children, title}:{children?: ReactNode,title?: string} ) {
 
 return (
 
@@ -13,7 +12,6 @@ return (
               title && <Heading 
                 text={title} 
                 className={'text-xl'} />
-
             }
             {children}
           </div>

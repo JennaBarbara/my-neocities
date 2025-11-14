@@ -6,9 +6,15 @@ import Button from "@/app/components/button"
 import { getHomePath } from "../path"
 import { redirect, RedirectType } from 'next/navigation'
 import { posts } from '@/app/home/weblog/posts'
+import JsxParser from 'react-jsx-parser'
 
-export default function Home() {
-    
+export default function Weblog() {
+
+    const dateDisplayOptions: Intl.DateTimeFormatOptions  = {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+    };
 
   return (
   <>
@@ -17,14 +23,15 @@ export default function Home() {
 
         {/* main section */}
         <div  className="col-span-1 md:col-span-4 flex flex-col content-start gap-2">
-            
             {posts.map((post, key) => (
                 <Card  title={post.title}
                     key={`post-${key}`}
                 >
-                {post.content}
+                    <JsxParser
+                        jsx={post.content}
+                    />
+                    <p>{`posted: ${new Date(post.date).toLocaleDateString("en-US", dateDisplayOptions)}`}</p>
             </Card>
-
             ))}
         </div>
         {/* right section */}

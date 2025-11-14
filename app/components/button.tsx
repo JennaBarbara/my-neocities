@@ -15,7 +15,7 @@ export default function Button({children, className, onClick, disabled, size='md
 
     return (
       <button 
-          className={`cursor-pointer z-50 outline-2 outline-black rounded-md bg-radial-[at_25%_25%] from-white via-slate-200 to-slate-100 disabled:opacity-50 ${padding} ${className}`}
+          className={`cursor-pointer z-50 outline-2 outline-black rounded-md bg-radial-[at_25%_25%] from-white via-slate-200 to-slate-100 hover:via-slate-100 hover:to-white disabled:opacity-50 ${padding} ${className}`}
           onClick={onClick}
           disabled={disabled}
        >

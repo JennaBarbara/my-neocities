@@ -40,17 +40,22 @@ export default function Home() {
         <Card
             title="About"
         >
-        <div className="flex flex-col gap-4">
-        <p>
-          I’m Jenna, I usually go by JenBarb or JenBarb_ online. I like doing crafts and programming. If you live in Toronto you might remember me from the time I drew fanart of a guy on a segway grabbing a raccoon and BlogTO interviewed me about it. I grew up on a bee farm. 
-        </p>
-        <p>
-          Lately I&apos;ve been into digital art, mostly using Clip Studio Paint. I like the program&apos;s vector tools for being able to make clean looking illustrations without needing to spend too much time doing cleanup. That said, I&apos;ll probably be getting back into watercolour and gouache soon just to cut down on my screen time. 
-        </p>
-        <p>
-          I&apos;ve also been enjoing sewing (mainly wearable garments for myself, from vintage and deadstock fabric, but I occasionally make cosplays), reading fantasy & sci books, and going to concerts these days. 
-        </p>
-
+        <div className="flex flex-col md:flex-row gap-2">
+          <div className="flex flex-col gap-4">
+            <p>
+              I’m Jenna, I usually go by JenBarb or JenBarb_ online. I like doing crafts and programming. If you live in Toronto you might remember me from the time I drew fanart of a guy on a segway grabbing a raccoon and BlogTO interviewed me about it. I grew up on a bee farm. 
+            </p>
+            <p>
+              Lately I&apos;ve been into digital art, mostly using Clip Studio Paint. I like the program&apos;s vector tools for being able to make clean looking illustrations without needing to spend too much time doing cleanup. That said, I&apos;ll probably be getting back into watercolour and gouache soon just to cut down on my screen time. 
+            </p>
+            <p>
+              I&apos;ve also been enjoing sewing (mainly wearable garments for myself, from vintage and deadstock fabric, but I occasionally make cosplays), reading fantasy & sci books, and going to concerts these days. 
+            </p>
+          </div>
+          <div className="w-64">
+            <Image src="/cropped.png" 
+            alt="this is me" objectFit="contain" width={300} height={300} />  
+          </div>
         </div>
 
         </Card>
